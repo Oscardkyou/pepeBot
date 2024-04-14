@@ -1,11 +1,18 @@
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
-
+from lexicon.lexicon import LEXICON_KEY
 
 kb_builder = ReplyKeyboardBuilder()
 
 
-buttons = [KeyboardButton(text=f"Кнопка {i+1}") for i in range(10)]
+def create_start_keyboard():
+   kb_builder = ReplyKeyboardBuilder()
+   buttons = [KeyboardButton(text=i) for i in LEXICON_KEY.values()]
+   kb_builder.row(*buttons)
+   return kb_builder
 
 
-kb_builder.row(*buttons, width=2)
+def create_referal_keyboard():
+   url_button = InlineKeyboardButton(text='Пригласить друга', url='https://gitbook.tonraffles.org/ton-raffles/modules/jetton-launchpad/fairlaunch/how-to-create-a-fair-launch')
+   keyboard = InlineKeyboardMarkup(inline_keyboard=[[url_button]])
+   return keyboard
