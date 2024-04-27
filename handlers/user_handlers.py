@@ -22,3 +22,4 @@ async def process_help_command(message: Message):
 @router.message(F.text == LEXICON_KEY['info'])
 async def get_info(message: Message):
    await message.answer(text=LEXICON_RU['info'], reply_markup=create_referal_keyboard(), parse_mode='MarkdownV2')
+
